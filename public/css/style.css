@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+
+}
+
+.topo {
+    width: auto;
+    position: relative;
+    top: 20px;
+    right: 40px;
+    text-align: end;
+    color: aliceblue;
+    
+}
+
+.topo a {
+    padding-right: 20px;
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.header {
+    background-color: blueviolet;
+    margin-top: -20px;
+}
+
+.header img {
+    margin: 0;
+    float: left;
+    display: inline;
+}
+
+.conteudo { 
+    margin: 20px;
+    padding: 8px;
+    text-align: center;
+
+}
+.conteudo h2 {
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:blueviolet;
+}
+
+.footer {
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}

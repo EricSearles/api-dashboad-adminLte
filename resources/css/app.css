@@ -1,0 +1,10 @@
+body {
+    background-color: blue;
+}
+
+.topo {
+    width: auto;
+    height: 5%;
+    text-align: end;
+    background-color: blue;
+}
