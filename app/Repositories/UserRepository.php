@@ -49,11 +49,21 @@ class UserRepository
         return $this->model->with('enderecos')->find($id);
     }
 
+    public function getUserWithContatos($id)
+    {
+        return $this->model->with('contacts')->find($id);
+    }
+
     //verifica se o usuario possui endereco cadastrado
     public function hasEndereco($id)
     {
         $user = $this->model->find($id);
         return $user && $user->enderecos()->exists();
+    }
+
+    public function getUserWithAll($id)
+    {
+        return $this->model->with('enderecos', 'contacts')->find($id);
     }
 
 

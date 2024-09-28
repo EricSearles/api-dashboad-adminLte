@@ -84,4 +84,9 @@ class User extends Authenticatable implements JWTSubject
         return $this->morphMany(Endereco::class, 'addressable');
     }
 
+    public function contacts()
+    {
+        return $this->morphMany(Contact::class, 'addressable');
+    }
+
 }

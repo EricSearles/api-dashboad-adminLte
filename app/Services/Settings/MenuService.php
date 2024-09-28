@@ -25,7 +25,12 @@ class MenuService
     public function getAccessibleMenusForUser(User $user)
     {
         $accessLevelIds = $user->accessLevels->pluck('id');
-       // dd($this->repository->getMenusByAccessLevels($accessLevelIds));
+        // $teste = $this->repository->getMenusByAccessLevels($accessLevelIds);
+        // foreach($teste as $menu){
+        //     var_dump($menu);
+        // };
+
+        // die("AAA");
         return $this->repository->getMenusByAccessLevels($accessLevelIds);
     }
 
