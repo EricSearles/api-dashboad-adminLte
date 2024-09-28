@@ -39,11 +39,6 @@ class UserRepository
         return $this->model->paginate($perPage);
     }
 
-    public function saveEndereco($user, $enderecoData)
-    {
-        return $user->enderecos()->create($enderecoData);
-    }
-
     public function getUserWithEnderecos($id)
     {
         return $this->model->with('enderecos')->find($id);

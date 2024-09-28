@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');
 
      Route::get('users', [UserController::class, 'index'])->name('users');
-     Route::get('users/{id}', [UserController::class, 'buscaDadosUsuario'])->name('users.show');
+     Route::get('users/{id}', [UserController::class, 'exibeDadosUsuario'])->name('users.show');
      Route::put('users/edit/{id}', [UserController::class, 'editarDadosUsuario'])->name('users.edit');
      Route::delete('users/{id}', [UserController::class, 'deletaDadosUsuario'])->name('users.destroy');
     //  Route::get('users/type/{type_id}', [UserController::class, 'getUserByType'])->name('users.type');
@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/{id}/add-endereco', [UserController::class, 'addEndereco'])->name('user.add-endereco');
     Route::get('/user/{id}/add-contato', [UserController::class, 'showAddContatoForm'])->name('user.add-contato-form');
     Route::post('/user/{id}/add-contato', [UserController::class, 'addContato'])->name('user.add-contato');
-    
+
     Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 
@@ -49,9 +49,11 @@ Route::middleware('auth')->group(function () {
     Route::get('menus', [Settings\MenuController::class, 'index'])->name('menu.index');
 
     Route::get('clients', [ClientController::class, 'index'])->name('clients');
-    Route::get('clients/{id}', [ClientController::class, 'buscaDadosCliente'])->name('clients.show');
+    Route::get('clients/{id}', [ClientController::class, 'exibeDadosCliente'])->name('clients.show');
     Route::put('clients/edit/{id}', [ClientController::class, 'editarDadosCliente'])->name('clients.edit');
     Route::delete('clients/{id}', [ClientController::class, 'deletaDadosCliente'])->name('clients.destroy');
     Route::get('/client/{id}/add-endereco', [ClientController::class, 'showAddEnderecoForm'])->name('client.add-endereco-form');
     Route::post('/client/{id}/add-endereco', [ClientController::class, 'addEndereco'])->name('client.add-endereco');
+    Route::get('/client/{id}/add-contato', [ClientController::class, 'showAddContatoForm'])->name('client.add-contato-form');
+    Route::post('/client/{id}/add-contato', [ClientController::class, 'addContato'])->name('client.add-contato');
 });
