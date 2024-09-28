@@ -30,8 +30,6 @@ class UserController extends Controller
         //$users = $this->userService->getUsers();
         $users = $this->userService->getUsersWithEnderecoStatusPaginated(10);
         $accessLevels = $this->userService->getAllAccessLevels();
-
-
         return view('users.index', compact('users', 'accessLevels'));
     }
 
@@ -108,7 +106,7 @@ class UserController extends Controller
         }
     }
 
-    public function buscaDadosUsuario($id)
+    public function exibeDadosUsuario($id)
     {
         $userData = $this->userService->getUserWithAll($id);
         //dd($userData);

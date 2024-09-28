@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Minha Competição</title>
+    <title>Api Laravel 10 - AdminLTE-3</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
     <!-- Fonts -->
@@ -43,7 +43,7 @@
         <a href="{{ route('register') }}" class="btn btn-outline-primary">Crie sua competição agora!</a>
     </div> -->
     <div class="footer">
-        <p>&copy; Searles Soluções Web 2021 - <?php echo date('Y'); ?> - Locadora de veículos</p>
+        <p>&copy; Searles Soluções Web 2021 - <?php echo date('Y'); ?> - Api Laravel 10 - AdminLTE-3 -</p>
     </div>
 
     </div>

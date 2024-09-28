@@ -9,26 +9,26 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- Nome -->
-                            <h3>{{ __('Informações do Usuário') }}</h3>
+                            <h3>{{ __('Informações do Cliente') }}</h3>
                             <div class="form-group row">
                                 <!-- Nome -->
                                 <div class="col-md-6">
                                     <label>{{ __('Nome') }}</label>
-                                    <p>{{ $userData->name }}</p>
+                                    <p>{{ $clientData->nome }}</p>
                                 </div>
 
                                 <!-- Email -->
                                 <div class="col-md-6">
                                     <label>{{ __('Email') }}</label>
-                                    <p>{{ $userData->email }}</p>
+                                    <p>{{ $clientData->email }}</p>
                                 </div>
                             </div>
                             <hr>
 
                             <!-- Campos de contato -->
                             <h3>{{ __('Contato') }}</h3>
-                            @if($userData->contacts)
-                                @foreach($userData->contacts as $contatos)
+                        @if($clientData->contacts)
+                            @foreach($clientData->contacts as $contatos)
                                     <div class="form-group row">
                                         <!-- Celular -->
                                         <div class="col-md-6">
@@ -54,8 +54,8 @@
                         <!-- Campos de endereço -->
                             <h3>{{ __('Endereço') }}</h3>
 
-                            @if($userData->enderecos)
-                                @foreach($userData->enderecos as $endereco)
+                            @if($clientData->enderecos)
+                                @foreach($clientData->enderecos as $endereco)
                                     <div class="form-group">
                                         <label>{{ __('CEP') }}</label>
                                         <p>{{ $endereco->cep }}</p>

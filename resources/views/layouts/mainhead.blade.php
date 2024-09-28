@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'My Competition') }}</title>
+    <title>{{ config('app.name', 'Api Laravel 10') }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
