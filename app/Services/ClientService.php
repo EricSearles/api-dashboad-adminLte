@@ -59,5 +59,11 @@ class ClientService
         return $this->clientRepository->getClientWithContatos($clientId);
     }
 
+    // Método para contar os usuários
+    public function getClientCount()
+    {
+        return $this->clientRepository->countClients();
+    }
+
 
 }
