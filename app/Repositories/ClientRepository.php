@@ -48,5 +48,11 @@ class ClientRepository
         return $this->model->with('enderecos', 'contacts')->find($id);
     }
 
+    // Método para contar os clientes cadastrados
+    public function countClients()
+    {
+        return $this->model->count();
+    }
+
 
 }

@@ -61,5 +61,11 @@ class UserRepository
         return $this->model->with('enderecos', 'contacts')->find($id);
     }
 
+    // Método para contar os usuários cadastrados
+    public function countUsers()
+    {
+        return $this->model->count();
+    }
+
 
 }

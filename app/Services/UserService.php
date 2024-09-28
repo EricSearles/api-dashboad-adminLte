@@ -89,4 +89,10 @@ class UserService
 
         return $this->contatoService->addContatoToModel($user, $contatoData);
     }
+
+    // Método para contar os usuários
+    public function getUserCount()
+    {
+        return $this->userRepository->countUsers();
+    }
 }
