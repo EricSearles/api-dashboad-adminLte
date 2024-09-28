@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up()
+    {
+        Schema::create('contacts', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('addressable_id'); // ID da entidade relacionada
+            $table->string('addressable_type'); // Tipo da entidade relacionada
+            $table->string('dddCel');
+            $table->string('numeroCel');
+            $table->string('dddTel');
+            $table->string('numeroTel');
+            $table->string('email');
+            $table->timestamps();
+
+            // Índices para melhorar a busca pelo relacionamento polimórfico
+            $table->index(['addressable_id', 'addressable_type']);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('contacts');
+    }
+};

@@ -64,6 +64,11 @@
                                         <a href="{{ route('user.add-endereco-form', ['id' => $user->id]) }}" class="btn btn-sm btn-info {{ $user->hasEndereco ? 'disabled' : '' }}" title="Cadastrar Endereço">
                                             <i class="fas fa-map-marker-alt"></i>
                                         </a>
+
+                                        <!-- Botão Cadastrar Contato -->
+                                        <a href="{{ route('user.add-contato', ['id' => $user->id]) }}" class="btn btn-sm btn-success" title="Cadastrar Contato">
+                                            <i class="fas fa-phone"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach

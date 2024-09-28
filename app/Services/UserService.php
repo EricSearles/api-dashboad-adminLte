@@ -9,13 +9,16 @@ class UserService
 {
     private $userRepository;
     private $accessLevelService;
+    protected $enderecoService;
 
     public function __construct(
         UserRepository $userRepository,
-        AccessLevelService $accessLevelService
+        AccessLevelService $accessLevelService,
+        EnderecoService $enderecoService
     ) {
         $this->userRepository = $userRepository;
         $this->accessLevelService = $accessLevelService;
+        $this->enderecoService = $enderecoService;
     }
 
     public function getUsers()
@@ -41,12 +44,17 @@ class UserService
             throw new \Exception('Usuário não encontrado');
         }
 
-        return $this->userRepository->saveEndereco($user, $enderecoData);
+        return $this->enderecoService->addEnderecoToModel($user, $enderecoData);
     }
 
     public function getUserWithEnderecos($userId)
     {
         return $this->userRepository->getUserWithEnderecos($userId);
+    }
+
+    public function getUserWithContatos($userId)
+    {
+        return $this->userRepository->getUserWithContatos($userId);
     }
 
     //verifica se o usuario possui endereco cadastrado
@@ -64,5 +72,21 @@ class UserService
         }
 
         return $paginatedUsers;
+    }
+
+    public function getUserWithAll($userId)
+    {
+        return $this->userRepository->getUserWithAll($userId);
+    }
+
+    public function addContatoToUser($userId, $contatoData)
+    {
+        $user = $this->userRepository->find($userId);
+
+        if (!$user) {
+            throw new \Exception('Usuário não encontrado');
+        }
+
+        return $this->contatoService->addContatoToModel($user, $contatoData);
     }
 }

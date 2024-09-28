@@ -1,86 +1,113 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Content Header (Page header) -->
-    <style>
-        label {
-            margin-right: 8px;
-        }
-    </style>
-
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">{{ __('Users') }}</h1>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-
-{{--                    <div class="alert alert-info">--}}
-{{--                        Sample table page--}}
-{{--                    </div>--}}
-
+            <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+                <div class="col-lg-6 col-md-8">
                     <div class="card">
-                        <div class="card-body p-0">
+                        <div class="card-body">
+                            <!-- Nome -->
+                            <h3>{{ __('Informações do Usuário') }}</h3>
+                            <div class="form-group">
+                                <label>{{ __('Name') }}</label>
+                                <p>{{ $userData->name }}</p>
+                            </div>
 
-                            <table class="table">
-<thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Nivel Acesso</th>
-        <th>Ações</th> <!-- Nova coluna para ações -->
-    </tr>
-</thead>
-<tbody>
-@foreach($users as $user)
-    <tr>
-        <td>{{ $user->id }}</td>
-        <td>{{ $user->name }}</td>
-        <td>{{ $user->email }}</td>
-        <td>{{ $user->nivel_acesso }}</td>
-        <td>
-            <!-- Links para visualizar, editar e deletar -->
-            <a href="#" class="btn btn-sm btn-primary">
-                <i class="fas fa-eye"></i>
-            </a>
-            <a href="#" class="btn btn-sm btn-warning">
-                <i class="fas fa-edit"></i>
-            </a>
-            <form action="#" method="POST" style="display:inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Você tem certeza que deseja deletar este usuário?')">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </form>
-        </td>
-    </tr>
-@endforeach
-</tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label>{{ __('Email') }}</label>
+                                <p>{{ $userData->email }}</p>
+                            </div>
+                            <hr>
 
-                        <div class="card-footer clearfix">
-                            {{ $users->links() }}
+                            <!-- Campos de contato -->
+                            <h3>{{ __('Contato') }}</h3>
+                            @if($userData->contacts)
+                                @foreach($userData->contacts as $contatos)
+                                    <!-- DDD Celular -->
+                                    <div class="form-group">
+                                        <label>{{ __('DDD Cel') }}</label>
+                                        <p>{{ $contatos->ddd_cel ?? 'N/A' }}</p>
+                                    </div>
+
+                                    <!-- Número Celular -->
+                                    <div class="form-group">
+                                        <label>{{ __('Número Cel') }}</label>
+                                        <p>{{ $contatos->numero_cel ?? 'N/A' }}</p>
+                                    </div>
+
+                                    <!-- DDD Telefone -->
+                                    <div class="form-group">
+                                        <label>{{ __('DDD Tel') }}</label>
+                                        <p>{{ $contatos->ddd_tel ?? 'N/A' }}</p>
+                                    </div>
+
+                                    <!-- Número Telefone -->
+                                    <div class="form-group">
+                                        <label>{{ __('Número Tel') }}</label>
+                                        <p>{{ $contatos->numero_tel ?? 'N/A' }}</p>
+                                    </div>
+                                    <hr>
+                                @endforeach
+                            @else
+                                <p>{{ __('Não foram encontrados contato para este usuário.') }}</p>
+                            @endif
+                            <!-- Campos de endereço -->
+                            <h3>{{ __('Endereço') }}</h3>
+
+                            @if($userData->enderecos)
+                                @foreach($userData->enderecos as $endereco)
+                                    <div class="form-group">
+                                        <label>{{ __('CEP') }}</label>
+                                        <p>{{ $endereco->cep }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{{ __('Logradouro') }}</label>
+                                        <p>{{ $endereco->logradouro }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{{ __('Número') }}</label>
+                                        <p>{{ $endereco->numero }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{{ __('Complemento') }}</label>
+                                        <p>{{ $endereco->complemento }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{{ __('Bairro') }}</label>
+                                        <p>{{ $endereco->bairro }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{{ __('Cidade') }}</label>
+                                        <p>{{ $endereco->cidade }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{{ __('Estado') }}</label>
+                                        <p>{{ $endereco->estado }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>{{ __('País') }}</label>
+                                        <p>{{ $endereco->pais ?? 'Brasil' }}</p>
+                                    </div>
+
+                                    <hr>
+                                @endforeach
+                            @else
+                                <p>{{ __('Não foram encontrados dados de endereço.') }}</p>
+                            @endif
                         </div>
                     </div>
-
                 </div>
             </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
+        </div>
     </div>
-    <!-- /.content -->
 @endsection

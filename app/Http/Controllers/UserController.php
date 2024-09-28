@@ -78,9 +78,42 @@ class UserController extends Controller
         }
     }
 
+    public function showAddContatoForm($id)
+    {
+        $user = $this->userService->getUserWithContatos($id);
+        //dd($user);
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Usuário não encontrado');
+        }
+
+        return view('users.add-contato', compact('user'));
+    }
+
+    public function addContato(Request $request, $id)
+    {
+        $request->validate([
+            'ddd_cel' => 'required|string|max:3',
+            'numero_cel' => 'required|string|max:15',
+            'ddd_tel' => 'nullable|string|max:3',
+            'numero_tel' => 'nullable|string|max:15',
+        ]);
+
+        try {
+            $this->userService->addContatoToUser($id, $request->all());
+
+            return redirect()->route('users.show', $id)->with('success', 'Endereço adicionado com sucesso');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
     public function buscaDadosUsuario($id)
     {
-        return "OI";
+        $userData = $this->userService->getUserWithAll($id);
+        //dd($userData);
+        return view('users.show', compact('userData'));
+
     }
 
     public function editaDadosUsuario($id)
@@ -93,7 +126,7 @@ class UserController extends Controller
         dd("delete");
         $user = User::findOrFail($id);
         $user->delete();
-    
+
         return redirect()->route('usuarios.index')->with('success', 'Usuário deletado com sucesso.');
     }
 
