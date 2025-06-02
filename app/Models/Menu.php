@@ -15,4 +15,9 @@ class Menu extends Model
     {
         return $this->belongsToMany(AccessLevel::class, 'menu_access_levels');
     }
+
+    public function children()
+    {
+        return $this->hasMany(Menu::class, 'parent_id')->orderBy('order'); // Assumindo que há um campo parent_id
+    }
 }

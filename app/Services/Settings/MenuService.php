@@ -22,24 +22,49 @@ class MenuService
         return $this->repository->getAllMenus(); 
     }
 
-    public function getAccessibleMenusForUser(User $user)
+    public function getActiveMenus()
     {
-        $accessLevelIds = $user->accessLevels->pluck('id');
-        // $teste = $this->repository->getMenusByAccessLevels($accessLevelIds);
-        // foreach($teste as $menu){
-        //     var_dump($menu);
-        // };
-
-        // die("AAA");
-        return $this->repository->getMenusByAccessLevels($accessLevelIds);
+        return $this->repository->getActiveMenus(); 
     }
 
     
-
+    /**
+     * este é o metodo que retorna os menus na barra lateral 
+     * navigation-sidebar
+     */
+    public function getAccessibleMenusForUser(User $user)
+    {
+        $accessLevelIds = $user->accessLevels->pluck('id');
+        return $this->repository->getMenusByAccessLevels($accessLevelIds);
+    }
 
     public function getUserMenuLeft($userId)
     {
         return $this->repository->getUserMenuLeft($userId);
+    }
+
+    public function getPaginatedMenus($perPage = 10)
+    {
+        return $this->repository->paginate($perPage);
+    }
+
+    public function storeMenu($request)
+    {
+        $data = $request->all();
+       // $this->repository->store($data);
+    }
+    public function updateMenu($request, $id)
+    {
+        $data = $request->all();
+      //  $this->repository->update($data, $id);
+    }
+    public function statusMenu($id)
+    {
+        $this->repository->status($id);
+    }
+    public function destroyMenu($id)
+    {
+      //  $this->repository->destroy($id);
     }
 
 }

@@ -14,29 +14,29 @@
             data-accordion="false">
             @foreach($menus->getAccessibleMenusForUser(Auth::user()) as $menu)
                 <li class="nav-item">
-                @if($menu->id == 2)
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon {{ $menu->icon }}"></i>
-                        <p>
-                            {{ $menu->name }}
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview" style="display: none;">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Child menu</p>
-                            </a>
-                        </li>
-                    </ul>
+                    @if($menu->id == 2)
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon {{ $menu->icon }}"></i>
+                            <p>
+                                {{ $menu->name }}
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" style="display: none;">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Child menu</p>
+                                </a>
+                            </li>
+                        </ul>
                     @elseif($menu->id != 2)
-                            <a href="{{route($menu->route_name) }}" class="nav-link">
-                                <i class="nav-icon {{ $menu->icon }}"></i>
-                                <p>
-                                    {{ $menu->name }}
-                                </p>
-                            </a>
+                        <a href="{{route($menu->route_name) }}" class="nav-link">
+                            <i class="nav-icon {{ $menu->icon }}"></i>
+                            <p>
+                                {{ $menu->name }}
+                            </p>
+                        </a>
                 </li>
                 @endif
             @endforeach
