@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Api\AppointmentApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,9 @@ use App\Http\Controllers\UserController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+    Route::get('available-schedules', [AppointmentApiController::class, 'getAvailableSchedules']);
+    Route::post('appointments', [AppointmentApiController::class, 'store']);
+    Route::get('users/{userId}/appointments', [AppointmentApiController::class, 'getUserAppointments']);
 });
 
 Route::get('users', [UserController::class, 'retornaUsuarios']);
